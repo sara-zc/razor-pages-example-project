@@ -1,0 +1,41 @@
+﻿@page
+@model CIE206_ExampleProject.Pages.Admin.AllEmployeesModel
+@{
+    Layout = "_AdminLayout";
+}
+<div class="text-center">
+    <table class="table col-6">
+        <thead>
+            <tr>
+                <td>Fname</td>
+                <td>Minit</td>
+                <td>Lname</td>
+                <td>SSN</td>
+                <td>Bdate</td>
+                <td></td>
+                <td></td>
+
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                for (var i = 0; i < Model.dt.Rows.Count; i++)
+                {
+                    <tr>
+                        <form method="post">
+                        <td>@Model.dt.Rows[i]["Fname"]</td>
+                        <td>@Model.dt.Rows[i]["Minit"]</td>
+                        <td>@Model.dt.Rows[i]["Lname"]</td>
+                        <td>@Model.dt.Rows[i]["SSN"]</td>
+                        <td>@Model.dt.Rows[i]["Bdate"]</td>
+                        <td><button asp-page-handler="update" asp-route-ssn="@Model.dt.Rows[i]["SSN"]" class="btn btn-secondary">Update</button></td>
+                        <td><button asp-page-handler="delete" asp-route-ssn="@Model.dt.Rows[i]["SSN"]" class="btn btn-danger">Delete</button></td>
+                        </form>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+    <a asp-page="/AddEmployee" class="btn btn-primary">Add New Employee</a>
+</div>
+

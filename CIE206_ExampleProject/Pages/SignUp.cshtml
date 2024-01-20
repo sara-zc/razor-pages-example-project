@@ -1,0 +1,15 @@
+﻿@page
+@model CIE206_ExampleProject.Pages.SignUpModel
+@{
+}
+<center>
+    <h2>Sign Up</h2>
+<form method="post" class="col-4">
+    <input type="text" placeholder="username" asp-for="username" class="form-control" />
+    <br>
+    <input type="password" placeholder="password" asp-for="password" class="form-control" />
+    <br />
+    <button type="submit" class="btn btn-primary">Register</button>
+</form>
+<p class="text-danger">@Model.msg</p>
+</center>
