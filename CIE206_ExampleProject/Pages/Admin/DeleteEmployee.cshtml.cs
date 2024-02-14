@@ -25,7 +25,7 @@ namespace CIE206_ExampleProject.Pages.Admin
             msg = db.DeleteEmployee(ssn);
             if (msg == "1")
             {
-                return RedirectToPage("/Index");
+                return RedirectToPage("/Admin/Index");
             }
             return null;
         }

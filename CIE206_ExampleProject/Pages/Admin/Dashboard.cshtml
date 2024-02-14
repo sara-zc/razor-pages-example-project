@@ -1,0 +1,31 @@
+﻿@page
+@model CIE206_ExampleProject.Pages.Admin.IndexModel
+@{
+    Layout = "_AdminLayout";
+}
+
+<div class="row">
+    <div class="border col-5">
+        <h2>Number of employees per project</h2>
+        <canvas id="projectWorkersPieChart"></canvas>
+    </div>
+    <div class="border col-5 m-2">
+        <h2>Hours Per Project</h2>
+        <canvas id="projectHoursBarChart"></canvas>
+    </div>
+</div>
+<br />
+
+
+<script type="module">
+
+    document.addEventListener('DOMContentLoaded', (event) => {
+
+        var ctx1 = document.getElementById('projectWorkersPieChart');
+        var chart1 = new Chart(ctx1, @Html.Raw(Model.ChartJsonProjectWorkers) );
+
+        var ctx2 = document.getElementById('projectHoursBarChart');
+        var chart2 = new Chart(ctx2, @Html.Raw(Model.ChartJsonProjectHours) );
+
+    });
+</script>

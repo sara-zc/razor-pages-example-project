@@ -4,12 +4,13 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace CIE206_ExampleProject.Pages.Admin
 {
-    [BindProperties(SupportsGet = true)]
     public class UpdateEmployeeModel : PageModel
     {
         public DB db { get; set; }
         public string ssn { get; set; }
+        [BindProperty]
         public string msg { get; set; }
+        [BindProperty(SupportsGet =true)]
         public Employee emp { get; set; }
         public bool showForm { get; set; } = true;
 
@@ -33,7 +34,7 @@ namespace CIE206_ExampleProject.Pages.Admin
             msg = db.UpdateEmployee(emp);
             if (msg == "1")
             {
-                return RedirectToPage("/Index");
+                return RedirectToPage("/Admin/AllEmployees");
             }
             else
                 return Page();

@@ -34,5 +34,12 @@ namespace CIE206_ExampleProject.Pages
         {
             return RedirectToPage("/Error");
         }
+        public IActionResult OnPostLogout()
+        {
+            HttpContext.Session.SetString("username", "");
+            HttpContext.Session.SetString("password", "");
+
+            return RedirectToPage("/SignIn");
+        }
     }
 }
