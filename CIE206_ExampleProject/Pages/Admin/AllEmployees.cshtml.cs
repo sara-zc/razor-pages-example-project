@@ -15,10 +15,18 @@ namespace CIE206_ExampleProject.Pages.Admin
         public AllEmployeesModel(DB db) {
             this.db = db;
         }
-        public void OnGet()
+        public IActionResult? OnGet()
         {
-            dt = db.ReadTable("Employee");
-
+            // do not allow any non-admin users to access
+            if (HttpContext.Session.GetString("username") != "a-sara")
+            {
+                //return Unauthorized();    // returns 401 without message
+                return StatusCode((int)System.Net.HttpStatusCode.Unauthorized, "You are not allowed to access the admin dashboard!");
+            }
+            else {
+                dt = db.ReadTable("Employee");
+                return null;
+            }
         }
         public IActionResult OnPost()
         {

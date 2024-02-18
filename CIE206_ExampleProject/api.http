@@ -1,0 +1,16 @@
+# For more info on HTTP files go to https://aka.ms/vs/httpfile
+@hostname =localhost
+@port=7155
+@host={{hostname}}:{{port}}
+
+### Get signup page
+GET https://{{hostname}}:{{port}}/
+
+### Get login page
+GET https://{{hostname}}:{{port}}/signin
+
+### Get all employees page  -- 401 
+GET https://{{hostname}}:{{port}}/Admin/AllEmployees
+
+### Access non-existent page -- 404 error
+GET https://{{host}}/somepage
