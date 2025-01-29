@@ -25,6 +25,11 @@ PRIMARY KEY (SSN),
 FOREIGN KEY (Super_SSN) REFERENCES Employee,
 )
 
+CREATE table [User](
+username varchar(100),
+password varchar(20)
+)
+
 create table DEPARTMENT
 (
 Dname varchar(50),
@@ -59,7 +64,7 @@ Essn int,
 Pno int,
 primary key (Essn,Pno),
 Hours float,
-foreign key (Essn) references Employee,
+foreign key (Essn) references Employee on delete cascade,
 foreign key (Pno) references Project
 )
 
@@ -150,3 +155,6 @@ UPDATE EMPLOYEE SET Super_SSN = 333445555, Dno = 5	WHERE SSN = 666884444
 UPDATE EMPLOYEE SET Super_SSN = 333445555, Dno = 5	WHERE SSN = 453453453
 UPDATE EMPLOYEE SET Super_SSN = 987654321, Dno = 4	WHERE SSN = 987987987
 UPDATE EMPLOYEE SET Super_SSN = NULL,	   Dno = 1	WHERE SSN = 888665555
+
+insert into [User] values ('a-sara',123)
+select * from [User]
